@@ -8,13 +8,11 @@
     <link rel="stylesheet" href="style.css">
     <script src="script.js" defer></script>
 </head>
-<body>
+<body id="body">
     <h1>Notizen</h1>
-    <input type="text" id="notitzInput" placeholder="Geben Sie eine Notiz ein">
+    <input type="text" id="noteTitleInput" placeholder="Geben Sie einen Namen ein">
+    <input type="text" id="noteContentInput" placeholder="Geben Sie eine Notiz ein">
     <button id="submitNotiz" onclick="addNotiz()">Notiz hinzufügen</button>
-    <div class="notiz">
-        <p id="notizText"></p>
-    </div>
     <button id="clearStorage" onclick="clearNotizen()">Alle Notizen löschen</button>
 
 </body>

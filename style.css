@@ -1,0 +1,12 @@
+
+.notes{
+    border-style: solid;
+    border-width: 3px;
+    border-color: black;
+    border-radius: 10px;
+
+    padding: 5pt;
+    margin: 5pt;
+
+    width:fit-content;
+}

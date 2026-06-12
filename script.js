@@ -1,25 +1,44 @@
 class Note {
-    constructor(title, content) {
+    constructor(title, content, id) {
         this.title = title;
         this.content = content;
+        this.id = id;
     }
 
     showNote() {
-        body = document.getElementById("body");
+        //create note container
+        const container = document.getElementById("notesContainer");
         const div = document.createElement("div");
         div.classList.add("notes");
+
+        //display note object
         const title = document.createElement("h2");
         title.classList.add("noteTitle");
         title.textContent = this.title;
         const content = document.createElement("p");
         content.classList.add("noteContent");
         content.textContent = this.content;
+
+        //create remove button
+        const removeButton = document.createElement("button");
+        removeButton.textContent = "Notiz löschen";
+        removeButton.classList.add("removeButton");
+
+        removeButton.addEventListener("click", () => {
+            this.deleteNote();
+        });
+
+        //build dom
         div.appendChild(title);
         div.appendChild(content);
-        body.appendChild(div);
+        div.appendChild(removeButton);
+        container.appendChild(div);
 
     }
 
+    deleteNote() {
+        removeNote(this.id);
+    }
 }
 
 let noteArray = [];
@@ -47,14 +66,21 @@ function clearNotizen() {
     noteArray = [];
 }
 
-const note1 = new Note("Notiz 1", "Das ist eiine Notiz");
-note1.showNote();
-
 function addNotiz() {
     let noteTitle = noteTitleInput.value;
     let noteContent = noteContentInput.value;
-    const note = new Note(noteTitle, noteContent);
+    const note = new Note(noteTitle, noteContent, noteArray.length);
     noteArray.push(note);
     refreshNotes();
     console.log(noteArray);
+}
+
+function removeNote(id) {
+    let count = 0;
+    while(count < noteArray.length && id != noteArray[count].id) {
+        count++;
+    }
+    noteArray.splice(count, 1);
+    console.log("removed note");
+    refreshNotes();
 }

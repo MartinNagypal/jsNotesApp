@@ -9,11 +9,15 @@
     <script src="script.js" defer></script>
 </head>
 <body id="body">
-    <h1>Notizen</h1>
-    <input type="text" id="noteTitleInput" placeholder="Geben Sie einen Namen ein">
-    <input type="text" id="noteContentInput" placeholder="Geben Sie eine Notiz ein">
-    <button id="submitNotiz" onclick="addNotiz()">Notiz hinzufügen</button>
-    <button id="clearStorage" onclick="clearNotizen()">Alle Notizen löschen</button>
+    <div id="notesManageContainer">
+        <h1>Notizen</h1>
+        <input type="text" id="noteTitleInput" placeholder="Geben Sie einen Namen ein">
+        <input type="text" id="noteContentInput" placeholder="Geben Sie eine Notiz ein">
+        <button class="noteManagerButton"id="submitNotiz" onclick="addNotiz()">Notiz hinzufügen</button>
+        <button class="noteManagerButton" id="clearStorage" onclick="clearNotizen()">Alle Notizen löschen</button>
+    </div>
+    <div class="notesContainer" id="notesContainer"></div>
+
 
 </body>
 </html>

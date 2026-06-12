@@ -5,8 +5,47 @@
     border-color: black;
     border-radius: 10px;
 
-    padding: 5pt;
+    padding: 10pt;
     margin: 5pt;
+    max-width: 30%;
 
     width:fit-content;
+    transition: ease-in-out 0.2s;
+}
+
+.notes:hover{
+    transform: scale(1.05);
+    margin: 10pt;
+}
+
+.removeButton{
+    border-style: none;
+    border-radius: 5pt;
+    background-color: lightgray;
+    padding: 5pt;
+}
+
+.removeButton:active{
+    transform: scale(0.9);
+}
+
+#notesManageContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10pt;
+}
+
+.notesContainer{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.noteManagerButton{
+    padding: 7.5pt;
+    border-style: solid;
+    border-radius: 25pt;
+    background-color: lightgray;
+    border-width: 2px;
 }

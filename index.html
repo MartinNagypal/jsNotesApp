@@ -9,10 +9,13 @@
     <script src="script.js" defer></script>
 </head>
 <body id="body">
-    <div id="notesManageContainer">
-        <h1>Notizen</h1>
-        <input type="text" id="noteTitleInput" placeholder="Geben Sie einen Namen ein">
-        <input type="text" id="noteContentInput" placeholder="Geben Sie eine Notiz ein">
+    <div class="top">
+        <h1> Notes </h1>
+        <button class="noteManagerButton" id="toggleNewNote" onclick="toggleNewNote()">New Note</button>
+    </div>
+    <div id="notesManageContainer" class="hidden">
+        <input type="text" class="inputFields" id="noteTitleInput" placeholder="Geben Sie einen Namen ein">
+        <textarea class="inputFields" id="noteContentInput" placeholder="Geben Sie den Inhalt der Notiz ein"></textarea>
         <button class="noteManagerButton"id="submitNotiz" onclick="addNotiz()">Notiz hinzufügen</button>
         <button class="noteManagerButton" id="clearStorage" onclick="clearNotizen()">Alle Notizen löschen</button>
     </div>

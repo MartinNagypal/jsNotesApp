@@ -18,6 +18,9 @@ class Note {
         const content = document.createElement("p");
         content.classList.add("noteContent");
         content.textContent = this.content;
+        const id = document.createElement("p");
+        id.classList.add("noteId");
+        id.textContent = `ID: ${this.id}`;
 
         //create remove button
         const removeButton = document.createElement("button");
@@ -32,6 +35,7 @@ class Note {
         div.appendChild(title);
         div.appendChild(content);
         div.appendChild(removeButton);
+        div.appendChild(id);
         container.appendChild(div);
 
     }
@@ -64,6 +68,7 @@ function clearNotizen() {
     storage.clear();
     clearNotes();
     noteArray = [];
+    toggleNewNote();
 }
 
 function addNotiz() {
@@ -73,6 +78,7 @@ function addNotiz() {
     noteArray.push(note);
     refreshNotes();
     console.log(noteArray);
+    toggleNewNote();
 }
 
 function removeNote(id) {
@@ -83,4 +89,9 @@ function removeNote(id) {
     noteArray.splice(count, 1);
     console.log("removed note");
     refreshNotes();
+}
+
+function toggleNewNote(){
+    const container = document.getElementById("notesManageContainer");
+    container.classList.toggle("hidden");
 }

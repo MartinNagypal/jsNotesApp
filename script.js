@@ -59,7 +59,7 @@ function clearNotes() {
 
 function refreshNotes() {
     clearNotes();
-    for(let i = 0; i < noteArray.length; i++) {
+    for(let i = noteArray.length -1; i >= 0; i--) {
         noteArray[i].showNote();
     }
 }

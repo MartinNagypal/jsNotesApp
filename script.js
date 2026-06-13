@@ -18,16 +18,20 @@ class Note {
         const content = document.createElement("p");
         content.classList.add("noteContent");
         content.textContent = this.content;
-        const id = document.createElement("p");
-        id.classList.add("noteId");
-        id.textContent = `ID: ${this.id}`;
         const line = document.createElement("hr");
         line.id = "splitLine";
 
-        //create remove button
+        //create note manage div
+        const manageDiv = document.createElement("div");
+        manageDiv.classList.add("manageDiv");
+        const id = document.createElement("span");
+        id.classList.add("noteId");
+        id.textContent = `ID: ${this.id}`;
         const removeButton = document.createElement("button");
-        removeButton.textContent = "Notiz löschen";
         removeButton.classList.add("removeButton");
+        const rmLogo = document.createElement("i");
+        rmLogo.classList.add("fa-solid", "fa-trash");
+        removeButton.appendChild(rmLogo);
 
         removeButton.addEventListener("click", () => {
             this.deleteNote();
@@ -37,8 +41,9 @@ class Note {
         div.appendChild(title);
         div.appendChild(content);
         div.appendChild(line);
-        div.appendChild(removeButton);
-        div.appendChild(id);
+        div.appendChild(manageDiv);
+        manageDiv.appendChild(removeButton);
+        manageDiv.appendChild(id);
         container.appendChild(div);
 
     }

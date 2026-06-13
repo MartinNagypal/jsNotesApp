@@ -6,7 +6,6 @@
     box-shadow: 0 0 10pt 1pt lightgray;
 
     padding: 10pt;
-    padding-bottom: 1pt;
     margin: 5pt;
     max-width: 30%;
     width: fit-content;
@@ -19,11 +18,11 @@
 }
 
 .removeButton{
+    position: static;
     border-style: none;
     border-radius: 5pt;
     background-color: lightgray;
     padding: 5pt;
-    margin-top: 10pt;
     font-size: 10pt;
 }
 .removeButton:active{
@@ -88,8 +87,19 @@
 .noteId{
     font-size: 10pt;
     color: gray;
+    margin: 0;
 }
 
 #splitLine{
-    color: rgba(211, 211, 211, 0.264);
+    border-style: none;
+    border-bottom: 1.2px solid lightgray;
+    border-radius: 50pt;
+}
+
+.manageDiv{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 10pt;
 }

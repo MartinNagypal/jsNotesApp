@@ -21,6 +21,8 @@ class Note {
         const id = document.createElement("p");
         id.classList.add("noteId");
         id.textContent = `ID: ${this.id}`;
+        const line = document.createElement("hr");
+        line.id = "splitLine";
 
         //create remove button
         const removeButton = document.createElement("button");
@@ -34,6 +36,7 @@ class Note {
         //build dom
         div.appendChild(title);
         div.appendChild(content);
+        div.appendChild(line);
         div.appendChild(removeButton);
         div.appendChild(id);
         container.appendChild(div);

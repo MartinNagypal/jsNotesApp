@@ -1,8 +1,13 @@
 class Note {
-    constructor(title, content, id) {
+    constructor(title, content, id, hr, min, dd, mm, yyyy) {
         this.title = title;
         this.content = content;
         this.id = id;
+        this.hour = hr;
+        this.minute = min;
+        this.day = dd;
+        this.month = mm;
+        this.year = yyyy;
     }
 
     showNote() {
@@ -18,15 +23,19 @@ class Note {
         const content = document.createElement("p");
         content.classList.add("noteContent");
         content.textContent = this.content;
-        const line = document.createElement("hr");
-        line.id = "splitLine";
 
         //create note manage div
         const manageDiv = document.createElement("div");
         manageDiv.classList.add("manageDiv");
-        const id = document.createElement("span");
+        const idDiv = document.createElement("div");
+        idDiv.classList.add("noteIdDiv");
+        const id = document.createElement("p");
         id.classList.add("noteId");
         id.textContent = `ID: ${this.id}`;
+        idDiv.appendChild(id);
+        const dateP = document.createElement("p");
+        dateP.classList.add("dateP");
+        dateP.textContent = `${this.hour}:${this.minute} - ${this.day}.${this.month}.${this.year}`;
         const removeButton = document.createElement("button");
         removeButton.classList.add("removeButton");
         const rmLogo = document.createElement("i");
@@ -34,16 +43,19 @@ class Note {
         removeButton.appendChild(rmLogo);
 
         removeButton.addEventListener("click", () => {
-            this.deleteNote();
+            div.classList.add("remove");
+            setTimeout(() => {
+                this.deleteNote();
+            }, 300);
         });
 
         //build dom
         div.appendChild(title);
         div.appendChild(content);
-        div.appendChild(line);
         div.appendChild(manageDiv);
+        manageDiv.appendChild(idDiv);
+        manageDiv.appendChild(dateP);
         manageDiv.appendChild(removeButton);
-        manageDiv.appendChild(id);
         container.appendChild(div);
 
     }
@@ -82,7 +94,14 @@ function clearNotizen() {
 function addNotiz() {
     let noteTitle = noteTitleInput.value;
     let noteContent = noteContentInput.value;
-    const note = new Note(noteTitle, noteContent, noteArray.length);
+    let id = noteArray.length;
+    for(let i = 0; i < noteArray.length; i++) {
+        if(noteArray[i].id == noteArray.length) {
+            id++;
+        }
+    }
+    const date = new Date();
+    const note = new Note(noteTitle, noteContent, id, date.getHours(), date.getMinutes(), date.getDate(), date.getMonth() + 1, date.getFullYear());
     noteArray.push(note);
     refreshNotes();
     console.log(noteArray);
@@ -101,5 +120,9 @@ function removeNote(id) {
 
 function toggleNewNote(){
     const container = document.getElementById("notesManageContainer");
+    const newNoteContainer = document.querySelector(".newNoteContainer");
+    const addNoteButton = document.querySelector(".addNoteButton");
+    newNoteContainer.classList.toggle("hidden");
     container.classList.toggle("hidden");
+    addNoteButton.classList.toggle("cancel");
 }

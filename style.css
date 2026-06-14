@@ -11,11 +11,20 @@
     width: fit-content;
     transition: ease-in-out 0.2s;
 
+    display: flex;
+    flex-direction: column;
+
 }
 
-.notes:hover{
-    transform: scale(1.05);
-    margin: 10pt;
+@media (max-width: 600px) {
+    .notes {
+        max-width: 80%;
+    }
+}
+
+.notes.remove {
+    transform: scale(0.75) translateY(-150px);
+    opacity: 0;
 }
 
 .removeButton{
@@ -40,7 +49,31 @@
     margin-bottom: 10pt;
 }
 
+.newNoteContainer{
+    position: absolute;
+    width: 95%;
+    height: 95%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 99;
+    background-color: rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(5px);
+    border-radius: 15pt;
+
+    inset: 0;
+    margin: auto;
+    transition: opacity 0.3s ease;
+}
+
 #notesManageContainer{
+    position: absolute;
+    inset: 0;
+    margin: auto;
+    width: fit-content;
+    height: fit-content;
+    z-index: 100;
+
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -48,10 +81,8 @@
     overflow: hidden;
     padding: 5pt;
 
-    max-height: 500px;
-    transform: translateY(0);
+    transform: scale(1);
     opacity: 1;
-    transition: all 0.3s ease;
 }
 
 .notesContainer{
@@ -62,9 +93,35 @@
 
 .noteManagerButton{
     padding: 7.5pt;
-    border-style: solid;
-    border-radius: 25pt;
-    border-width: 1px;
+    border-style: none;
+    border-radius: 10pt;
+    box-shadow: 0 0 5pt 1pt rgb(193, 193, 193);
+    transition: all 0.3s ease;
+}   
+.noteManagerButton:hover{
+    transform: scale(1.1);
+}
+
+.addNoteButton{
+    padding: 7.5pt;
+    border-style: none;
+    border-radius: 50%;
+
+    height: fit-content;
+    aspect-ratio: 1 / 1;
+    z-index: 98;
+    transform: rotate(0deg) scale(1);
+    transition: all 0.3s ease;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 15pt;
+}
+
+.addNoteButton.cancel {
+    transform: rotate(45deg) scale(1.2);
+    z-index: 100;
 }
 
 .inputFields{
@@ -80,27 +137,38 @@
 }
 
 .hidden{
-    transform: translateY(-20px) !important;
+    transform: scale(0.5) !important;
     opacity: 0 !important;
     max-height: 0 !important;
 }
 
-.noteId{
-    font-size: 10pt;
-    color: gray;
-    margin: 0;
+.noteIdDiv{
+    display: flex;
+    flex-direction: row;
 }
 
-#splitLine{
-    border-style: none;
-    border-bottom: 1.2px solid lightgray;
-    border-radius: 50pt;
+.noteId{
+    font-size: 8pt;
+    color: gray;
+    margin: 0;
 }
 
 .manageDiv{
     display: flex;
     flex-direction: row;
-    justify-content: flex-start;
-    align-items: center;
+    justify-content: space-between;
+    align-items: flex-end;
+    min-width: 100%;
+    box-sizing: border-box;
     gap: 10pt;
+    
+    border-top: 1px solid lightgray;
+    padding-top: 7.5pt;
+    margin-top: auto;
+}
+
+.dateP{
+    font-size: 10pt;
+    color: gray;
+    margin: 0;
 }
